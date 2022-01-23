@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.yatochk.wishlistapp.R
 import com.yatochk.wishlistapp.data.Gift
-import com.yatochk.wishlistapp.data.WishListRepository
 import com.yatochk.wishlistapp.databinding.FragmentGiftAddBinding
+import com.yatochk.wishlistapp.domain.AddUserGiftUseCase
 import com.yatochk.wishlistapp.ui.BaseFragment
 import com.yatochk.wishlistapp.ui.gift.list.GiftsFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class AddGiftFragment : BaseFragment<FragmentGiftAddBinding>() {
 
     @Inject
-    lateinit var repository: WishListRepository
+    lateinit var addUserGiftUseCase: AddUserGiftUseCase
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -37,7 +37,7 @@ class AddGiftFragment : BaseFragment<FragmentGiftAddBinding>() {
                 editTextName.text.toString(),
                 editTextLink.text.toString()
             )
-            repository.addGiftToWishList("wishlist-alexey", gift)
+            addUserGiftUseCase.add(gift)
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment, GiftsFragment())
                 .commitAllowingStateLoss()

@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yatochk.wishlistapp.R
 import com.yatochk.wishlistapp.data.Gift
-import com.yatochk.wishlistapp.data.WishListRepository
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
+import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
+import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
 import com.yatochk.wishlistapp.ui.BaseFragment
 import com.yatochk.wishlistapp.ui.gift.add.AddGiftFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,10 @@ import javax.inject.Inject
 class GiftsFragment : BaseFragment<FragmentGiftListBinding>() {
 
     @Inject
-    lateinit var repository: WishListRepository
+    lateinit var getUserWishListUseCase: GetUserWishListUseCase
+
+    @Inject
+    lateinit var removeUserGiftUseCase: RemoveUserGiftUseCase
 
     private val adapter: GiftAdapter by lazy {
         GiftAdapter(layoutInflater, ::onGiftLinkClick, ::onGiftDeleteClick)
@@ -35,7 +39,7 @@ class GiftsFragment : BaseFragment<FragmentGiftListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        repository.getWishList("wishlist-alexey").observe(viewLifecycleOwner) {
+        getUserWishListUseCase.get().observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
         binding?.apply {
@@ -59,7 +63,7 @@ class GiftsFragment : BaseFragment<FragmentGiftListBinding>() {
     }
 
     private fun onGiftDeleteClick(gift: Gift) {
-        repository.removeGiftFromWishList("wishlist-alexey", gift.name)
+        removeUserGiftUseCase.remove(gift)
     }
 
     private fun FragmentGiftListBinding.setupRecycler() {
