@@ -4,4 +4,8 @@
     <style name="GiftName">
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="FriendName">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>

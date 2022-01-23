@@ -1,8 +1,8 @@
 package com.yatochk.wishlistapp.domain
 
-import com.yatochk.wishlistapp.data.Gift
-import com.yatochk.wishlistapp.data.UserInfoRepository
-import com.yatochk.wishlistapp.data.WishListRepository
+import com.yatochk.wishlistapp.data.gift.Gift
+import com.yatochk.wishlistapp.data.user.UserInfoRepository
+import com.yatochk.wishlistapp.data.gift.WishListRepository
 import javax.inject.Inject
 
 class AddUserGiftUseCase @Inject constructor(

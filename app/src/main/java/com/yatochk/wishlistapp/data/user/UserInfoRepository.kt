@@ -1,6 +1,7 @@
-package com.yatochk.wishlistapp.data
+package com.yatochk.wishlistapp.data.user
 
 import android.content.SharedPreferences
+import com.yatochk.wishlistapp.utils.WISH_LIST_PREFIX
 import javax.inject.Inject
 
 class UserInfoRepository @Inject constructor(
@@ -8,7 +9,6 @@ class UserInfoRepository @Inject constructor(
 ) {
 
     companion object {
-        private const val WISH_LIST_PREFIX = "wishlist-"
         private const val USER_NAME_KEY = "user_name"
     }
 

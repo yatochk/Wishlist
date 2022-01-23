@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.data
+package com.yatochk.wishlistapp.data.gift
 
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.*
@@ -6,7 +6,7 @@ import com.google.firebase.firestore.*
 
 class WishListLiveData(
     private val documentReference: DocumentReference
-) : LiveData<List<Gift?>?>(), EventListener<DocumentSnapshot?> {
+) : LiveData<List<Gift>>(), EventListener<DocumentSnapshot?> {
 
     private var listenerRegistration = ListenerRegistration {}
 

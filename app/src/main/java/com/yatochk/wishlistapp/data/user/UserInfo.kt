@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.data
+package com.yatochk.wishlistapp.data.user
 
 data class UserInfo(
     val name: String?,

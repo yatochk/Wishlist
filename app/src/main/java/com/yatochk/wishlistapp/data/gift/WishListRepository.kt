@@ -1,18 +1,20 @@
-package com.yatochk.wishlistapp.data
+package com.yatochk.wishlistapp.data.gift
 
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.yatochk.wishlistapp.utils.WISH_LIST_COLLECTION
 import javax.inject.Inject
 
 class WishListRepository @Inject constructor(
     private val firestore: FirebaseFirestore
 ) {
 
-    companion object {
-        private const val WISH_LIST_COLLECTION = "wishlists"
+    fun getAllWishLists(): AllWishListsLiveData {
+        val collection = firestore.collection(WISH_LIST_COLLECTION)
+        return AllWishListsLiveData(collection)
     }
 
-    fun getWishList(name: String): WishListLiveData {
+    fun getWishListByName(name: String): WishListLiveData {
         val document = firestore.collection(WISH_LIST_COLLECTION)
             .document(name)
         return WishListLiveData(document)

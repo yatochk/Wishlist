@@ -3,7 +3,7 @@ package com.yatochk.wishlistapp.ui.user.gifts
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.yatochk.wishlistapp.data.Gift
+import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.GiftItemBinding
 
 class GiftAdapter(

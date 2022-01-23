@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yatochk.wishlistapp.R
-import com.yatochk.wishlistapp.data.Gift
+import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.FragmentGiftAddBinding
 import com.yatochk.wishlistapp.domain.AddUserGiftUseCase
 import com.yatochk.wishlistapp.ui.BaseFragment
-import com.yatochk.wishlistapp.ui.user.gifts.GiftsFragment
+import com.yatochk.wishlistapp.ui.user.gifts.UserGiftsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -39,7 +39,7 @@ class AddGiftFragment : BaseFragment<FragmentGiftAddBinding>() {
             )
             addUserGiftUseCase.add(gift)
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment, GiftsFragment())
+                .replace(R.id.fragment, UserGiftsFragment())
                 .commitAllowingStateLoss()
         }
     }

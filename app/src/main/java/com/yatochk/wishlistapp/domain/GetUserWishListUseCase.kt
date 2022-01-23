@@ -1,8 +1,9 @@
 package com.yatochk.wishlistapp.domain
 
-import com.yatochk.wishlistapp.data.UserInfoRepository
-import com.yatochk.wishlistapp.data.WishListLiveData
-import com.yatochk.wishlistapp.data.WishListRepository
+import androidx.lifecycle.LiveData
+import com.yatochk.wishlistapp.data.gift.Gift
+import com.yatochk.wishlistapp.data.gift.WishListRepository
+import com.yatochk.wishlistapp.data.user.UserInfoRepository
 import javax.inject.Inject
 
 class GetUserWishListUseCase @Inject constructor(
@@ -10,9 +11,9 @@ class GetUserWishListUseCase @Inject constructor(
     private val userInfoRepository: UserInfoRepository
 ) {
 
-    fun get(): WishListLiveData {
+    fun get(): LiveData<List<Gift>> {
         val userInfo = userInfoRepository.getUserInfo()
-        return wishListRepository.getWishList(userInfo.wishListName)
+        return wishListRepository.getWishListByName(userInfo.wishListName)
     }
 
 }

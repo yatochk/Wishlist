@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yatochk.wishlistapp.R
-import com.yatochk.wishlistapp.data.Gift
+import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
 import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class GiftsFragment : BaseFragment<FragmentGiftListBinding>() {
+class UserGiftsFragment : BaseFragment<FragmentGiftListBinding>() {
 
     @Inject
     lateinit var getUserWishListUseCase: GetUserWishListUseCase
