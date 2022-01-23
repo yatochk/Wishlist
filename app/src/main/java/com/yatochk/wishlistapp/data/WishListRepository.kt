@@ -1,5 +1,6 @@
 package com.yatochk.wishlistapp.data
 
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
 
@@ -21,6 +22,13 @@ class WishListRepository @Inject constructor(
         firestore.collection(WISH_LIST_COLLECTION)
             .document(listName)
             .update(gift.name, gift.link)
+    }
+
+    fun removeGiftFromWishList(listName: String, giftName: String) {
+        val update = hashMapOf<String, Any>(giftName to FieldValue.delete())
+        firestore.collection(WISH_LIST_COLLECTION)
+            .document(listName)
+            .update(update)
     }
 
 }

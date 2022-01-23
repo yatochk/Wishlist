@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yatochk.wishlistapp.R
+import com.yatochk.wishlistapp.data.Gift
 import com.yatochk.wishlistapp.data.WishListRepository
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.ui.BaseFragment
@@ -22,7 +23,7 @@ class GiftsFragment : BaseFragment<FragmentGiftListBinding>() {
     lateinit var repository: WishListRepository
 
     private val adapter: GiftAdapter by lazy {
-        GiftAdapter(layoutInflater, ::onGiftLinkClick)
+        GiftAdapter(layoutInflater, ::onGiftLinkClick, ::onGiftDeleteClick)
     }
 
     override fun getViewBinding(
@@ -55,6 +56,10 @@ class GiftsFragment : BaseFragment<FragmentGiftListBinding>() {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
         startActivity(intent)
+    }
+
+    private fun onGiftDeleteClick(gift: Gift) {
+        repository.removeGiftFromWishList("wishlist-alexey", gift.name)
     }
 
     private fun FragmentGiftListBinding.setupRecycler() {
