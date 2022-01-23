@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.ui.gift.list
+package com.yatochk.wishlistapp.ui.user.gifts
 
 import androidx.recyclerview.widget.DiffUtil
 import com.yatochk.wishlistapp.data.Gift

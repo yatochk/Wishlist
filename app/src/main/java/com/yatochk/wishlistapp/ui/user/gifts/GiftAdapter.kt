@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.ui.gift.list
+package com.yatochk.wishlistapp.ui.user.gifts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

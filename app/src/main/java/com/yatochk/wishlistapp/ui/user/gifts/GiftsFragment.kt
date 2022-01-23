@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.ui.gift.list
+package com.yatochk.wishlistapp.ui.user.gifts
 
 import android.content.Intent
 import android.net.Uri
@@ -14,7 +14,7 @@ import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
 import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
 import com.yatochk.wishlistapp.ui.BaseFragment
-import com.yatochk.wishlistapp.ui.gift.add.AddGiftFragment
+import com.yatochk.wishlistapp.ui.user.add.AddGiftFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.ui.gift.add
+package com.yatochk.wishlistapp.ui.user.add
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.yatochk.wishlistapp.data.Gift
 import com.yatochk.wishlistapp.databinding.FragmentGiftAddBinding
 import com.yatochk.wishlistapp.domain.AddUserGiftUseCase
 import com.yatochk.wishlistapp.ui.BaseFragment
-import com.yatochk.wishlistapp.ui.gift.list.GiftsFragment
+import com.yatochk.wishlistapp.ui.user.gifts.GiftsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
