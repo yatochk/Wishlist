@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WishListApp</string>
+    <string name="add_gift">Добавить подарок</string>
+    <string name="create_gift">Создать подарок</string>
+    <string name="gift_name_hint">Название</string>
+    <string name="gift_link_hint">Ссылка</string>
 </resources>

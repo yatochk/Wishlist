@@ -17,4 +17,10 @@ class WishListRepository @Inject constructor(
         return WishListLiveData(document)
     }
 
+    fun addGiftToWishList(listName: String, gift: Gift) {
+        firestore.collection(WISH_LIST_COLLECTION)
+            .document(listName)
+            .update(gift.name, gift.link)
+    }
+
 }
