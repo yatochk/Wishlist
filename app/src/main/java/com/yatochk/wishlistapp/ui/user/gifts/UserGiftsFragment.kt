@@ -1,9 +1,6 @@
 package com.yatochk.wishlistapp.ui.user.gifts
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +10,13 @@ import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
 import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
-import com.yatochk.wishlistapp.ui.BaseFragment
+import com.yatochk.wishlistapp.ui.GiftsFragment
 import com.yatochk.wishlistapp.ui.user.add.AddGiftFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class UserGiftsFragment : BaseFragment<FragmentGiftListBinding>() {
+class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
 
     @Inject
     lateinit var getUserWishListUseCase: GetUserWishListUseCase
@@ -27,8 +24,8 @@ class UserGiftsFragment : BaseFragment<FragmentGiftListBinding>() {
     @Inject
     lateinit var removeUserGiftUseCase: RemoveUserGiftUseCase
 
-    private val adapter: GiftAdapter by lazy {
-        GiftAdapter(layoutInflater, ::onGiftLinkClick, ::onGiftDeleteClick)
+    private val adapterUser: UserGiftAdapter by lazy {
+        UserGiftAdapter(layoutInflater, ::onGiftLinkClick, ::onGiftDeleteClick)
     }
 
     override fun getViewBinding(
@@ -41,7 +38,7 @@ class UserGiftsFragment : BaseFragment<FragmentGiftListBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getUserWishListUseCase.get().observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            adapterUser.submitList(it)
         }
         binding?.apply {
             setupRecycler()
@@ -57,22 +54,12 @@ class UserGiftsFragment : BaseFragment<FragmentGiftListBinding>() {
             .commitAllowingStateLoss()
     }
 
-    private fun onGiftLinkClick(url: String) {
-        try {
-            val webpage: Uri = Uri.parse(url)
-            val intent = Intent(Intent.ACTION_VIEW, webpage)
-            startActivity(intent)
-        } catch (throwable: Throwable) {
-            Log.e("Open web link", throwable.localizedMessage, throwable)
-        }
-    }
-
     private fun onGiftDeleteClick(gift: Gift) {
         removeUserGiftUseCase.remove(gift)
     }
 
     private fun FragmentGiftListBinding.setupRecycler() {
-        recyclerGifts.adapter = adapter
+        recyclerGifts.adapter = adapterUser
         recyclerGifts.layoutManager = LinearLayoutManager(context)
     }
 

@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yatochk.wishlistapp.R
 import com.yatochk.wishlistapp.data.friends.Friend
 import com.yatochk.wishlistapp.databinding.FragmentFriendsWishListsBinding
 import com.yatochk.wishlistapp.domain.GetFriendsUseCase
 import com.yatochk.wishlistapp.ui.BaseFragment
+import com.yatochk.wishlistapp.ui.friends.gifts.FriendGiftsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -43,6 +45,8 @@ class FriendsWishListsFragment : BaseFragment<FragmentFriendsWishListsBinding>()
     }
 
     private fun onFriendClick(friend: Friend) {
-
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment, FriendGiftsFragment.newInstance(friend.name))
+            .commitAllowingStateLoss()
     }
 }

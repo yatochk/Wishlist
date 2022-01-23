@@ -5,7 +5,7 @@ import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.GiftItemBinding
 
 
-class GiftViewHolder(
+class UserGiftViewHolder(
     private val binding: GiftItemBinding,
     private val openLinkListener: (String) -> Unit,
     private val deleteListener: (Gift) -> Unit

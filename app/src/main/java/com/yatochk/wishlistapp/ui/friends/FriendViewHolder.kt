@@ -3,6 +3,7 @@ package com.yatochk.wishlistapp.ui.friends
 import androidx.recyclerview.widget.RecyclerView
 import com.yatochk.wishlistapp.data.friends.Friend
 import com.yatochk.wishlistapp.databinding.FriendItemBinding
+import com.yatochk.wishlistapp.utils.capitalize
 
 class FriendViewHolder(
     private val binding: FriendItemBinding,
@@ -10,8 +11,10 @@ class FriendViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(friend: Friend) {
-        binding.name.text = friend.name
+        binding.name.text = friend.name.capitalize()
         binding.giftCount.text = friend.giftCount.toString()
-        onFriendClickListener(friend)
+        binding.root.setOnClickListener {
+            onFriendClickListener(friend)
+        }
     }
 }
