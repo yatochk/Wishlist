@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "508519082696",
+    "project_id": "wishlist-67ba9",
+    "storage_bucket": "wishlist-67ba9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508519082696:android:35d8ba3155f967b2da13fd",
+        "android_client_info": {
+          "package_name": "com.yatochk.wishlistapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508519082696-lss98s8hmmqgg107i7n8dpnd2g4spers.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABsGlx8HPKQl9oTzzgIryV9pqgZyeYpt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508519082696-lss98s8hmmqgg107i7n8dpnd2g4spers.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
