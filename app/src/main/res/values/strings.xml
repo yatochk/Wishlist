@@ -5,5 +5,5 @@
     <string name="gift_name_hint">Название</string>
     <string name="gift_link_hint">Ссылка</string>
     <string name="my_wishlist">Мой вишлист</string>
-    <string name="list_wish_lists">Список вишлистов</string>
+    <string name="friends_wish_lists">Вишлисты друзей</string>
 </resources>

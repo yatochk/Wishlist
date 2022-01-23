@@ -1,6 +1,6 @@
 package com.yatochk.wishlistapp.data.friends
 
 data class Friend(
-    val name: String,
+    var name: String,
     val giftCount: Int
 )
