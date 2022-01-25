@@ -1,9 +1,10 @@
-package com.yatochk.wishlistapp.ui
+package com.yatochk.wishlistapp.ui.base
 
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.viewbinding.ViewBinding
+import com.yatochk.wishlist.common.ui.BaseFragment
 
 abstract class GiftsFragment<T : ViewBinding> : BaseFragment<T>() {
 

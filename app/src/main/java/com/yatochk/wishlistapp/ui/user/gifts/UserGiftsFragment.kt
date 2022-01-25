@@ -10,7 +10,7 @@ import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
 import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
-import com.yatochk.wishlistapp.ui.GiftsFragment
+import com.yatochk.wishlistapp.ui.base.GiftsFragment
 import com.yatochk.wishlistapp.ui.user.add.AddGiftFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

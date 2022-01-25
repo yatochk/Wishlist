@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "WishListApp"
 include ':app'
+include ':login'
+include ':common'

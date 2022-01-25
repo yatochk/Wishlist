@@ -8,7 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yatochk.wishlistapp.databinding.FragmentFriendGiftListBinding
 import com.yatochk.wishlistapp.domain.GetFriendWishListUseCase
-import com.yatochk.wishlistapp.ui.GiftsFragment
+import com.yatochk.wishlistapp.ui.base.GiftsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

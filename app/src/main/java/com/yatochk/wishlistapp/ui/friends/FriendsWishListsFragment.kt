@@ -9,13 +9,13 @@ import com.yatochk.wishlistapp.R
 import com.yatochk.wishlistapp.data.friends.Friend
 import com.yatochk.wishlistapp.databinding.FragmentFriendsWishListsBinding
 import com.yatochk.wishlistapp.domain.GetFriendsUseCase
-import com.yatochk.wishlistapp.ui.BaseFragment
+import com.yatochk.wishlist.common.ui.BaseFragment
 import com.yatochk.wishlistapp.ui.friends.gifts.FriendGiftsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FriendsWishListsFragment : BaseFragment<FragmentFriendsWishListsBinding>() {
+class FriendsWishListsFragment : com.yatochk.wishlist.common.ui.BaseFragment<FragmentFriendsWishListsBinding>() {
 
     @Inject
     lateinit var getFriendsUseCase: GetFriendsUseCase

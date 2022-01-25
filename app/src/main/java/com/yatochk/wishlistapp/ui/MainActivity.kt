@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.yatochk.wishlistapp.R
 import com.yatochk.wishlistapp.data.user.UserInfoRepository
 import com.yatochk.wishlistapp.databinding.ActivityMainBinding
+import com.yatochk.wishlistapp.login.api.navigation.LoginRouter
 import com.yatochk.wishlistapp.ui.friends.FriendsWishListsFragment
 import com.yatochk.wishlistapp.ui.user.gifts.UserGiftsFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,12 +19,14 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var userInfoRepository: UserInfoRepository
 
+    lateinit var loginRouter: LoginRouter
+
     private val myGiftsFragment by lazy { UserGiftsFragment() }
     private val friendsWishListsFragment by lazy { FriendsWishListsFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userInfoRepository.setUserName("alexey")
+        userInfoRepository.setUserName("dania")
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showFragment(myGiftsFragment)

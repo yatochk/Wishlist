@@ -1,10 +1,12 @@
 package com.yatochk.wishlistapp.data.user
 
 import android.content.SharedPreferences
+import com.google.firebase.auth.FirebaseAuth
 import com.yatochk.wishlistapp.utils.WISH_LIST_PREFIX
 import javax.inject.Inject
 
 class UserInfoRepository @Inject constructor(
+    private val firebaseAuth: FirebaseAuth,
     private val sharedPreferences: SharedPreferences
 ) {
 
@@ -20,7 +22,12 @@ class UserInfoRepository @Inject constructor(
 
     fun getUserInfo(): UserInfo {
         val name = sharedPreferences.getString(USER_NAME_KEY, null)
-        return UserInfo(name, WISH_LIST_PREFIX + name)
+        val photo = firebaseAuth.currentUser?.photoUrl.toString()
+        return UserInfo(
+            name,
+            WISH_LIST_PREFIX + name,
+            photo
+        )
     }
 
 }

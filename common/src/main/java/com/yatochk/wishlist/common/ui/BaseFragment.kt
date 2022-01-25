@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.ui
+package com.yatochk.wishlist.common.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
