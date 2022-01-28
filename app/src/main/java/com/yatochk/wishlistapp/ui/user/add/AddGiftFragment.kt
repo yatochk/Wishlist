@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yatochk.wishlist.common.ui.BaseFragment
+import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlistapp.R
-import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.FragmentGiftAddBinding
 import com.yatochk.wishlistapp.domain.AddUserGiftUseCase
 import com.yatochk.wishlistapp.ui.user.gifts.UserGiftsFragment

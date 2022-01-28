@@ -1,7 +1,7 @@
 package com.yatochk.wishlistapp.ui.user.gifts
 
 import androidx.recyclerview.widget.RecyclerView
-import com.yatochk.wishlistapp.data.gift.Gift
+import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlistapp.databinding.GiftItemBinding
 
 

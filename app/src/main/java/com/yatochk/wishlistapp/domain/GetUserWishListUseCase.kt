@@ -1,19 +1,19 @@
 package com.yatochk.wishlistapp.domain
 
-import androidx.lifecycle.LiveData
-import com.yatochk.wishlistapp.data.gift.Gift
-import com.yatochk.wishlistapp.data.gift.WishListRepository
-import com.yatochk.wishlistapp.data.user.UserInfoRepository
+import com.yatochk.wishlist.gifts.api.gift.data.Gift
+import com.yatochk.wishlist.gifts.api.gift.data.GiftsRepository
+import com.yatochk.wishlistapp.login.api.data.UserInfoRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetUserWishListUseCase @Inject constructor(
-    private val wishListRepository: WishListRepository,
+    private val giftsRepository: GiftsRepository,
     private val userInfoRepository: UserInfoRepository
 ) {
 
-    fun get(): LiveData<List<Gift>> {
-        val userInfo = userInfoRepository.getUserInfo()
-        return wishListRepository.getWishListByName(userInfo.wishListName)
+    fun get(): Flow<List<Gift>> {
+        val wishListName = userInfoRepository.userInfo?.wishListName.orEmpty()
+        return giftsRepository.getGiftsByName(wishListName)
     }
 
 }

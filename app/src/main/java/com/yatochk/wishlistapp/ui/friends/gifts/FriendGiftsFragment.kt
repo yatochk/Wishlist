@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yatochk.wishlist.common.utils.lifecycleLaunch
 import com.yatochk.wishlistapp.databinding.FragmentFriendGiftListBinding
 import com.yatochk.wishlistapp.domain.GetFriendWishListUseCase
 import com.yatochk.wishlistapp.ui.base.GiftsFragment
@@ -45,13 +46,15 @@ class FriendGiftsFragment : GiftsFragment<FragmentFriendGiftListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        friendName?.let {
-            getFriendWishListUseCase.get(it).observe(viewLifecycleOwner) { gifts ->
-                adapterUser.submitList(gifts)
-            }
-        }
         binding?.apply {
             setupRecycler()
+        }
+        friendName?.let {
+            lifecycleLaunch {
+                getFriendWishListUseCase.get(it).collect { gifts ->
+                    adapterUser.submitList(gifts)
+                }
+            }
         }
     }
 

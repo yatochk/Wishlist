@@ -1,4 +1,4 @@
-package com.yatochk.wishlistapp.data.gift
+package com.yatochk.wishlist.gifts.api.gift.data
 
 data class Gift(
     val name: String,

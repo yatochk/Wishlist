@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.QuerySnapshot
-import com.yatochk.wishlistapp.utils.WISH_LIST_PREFIX
-
+import com.yatochk.wishlist.common.utils.WISH_LIST_PREFIX
 
 class FriendsListsLiveData(
     private val collectionReference: CollectionReference

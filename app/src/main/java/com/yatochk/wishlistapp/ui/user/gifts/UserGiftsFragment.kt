@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yatochk.wishlist.common.utils.lifecycleLaunch
+import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlistapp.R
-import com.yatochk.wishlistapp.data.gift.Gift
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
 import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
@@ -37,13 +38,15 @@ class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getUserWishListUseCase.get().observe(viewLifecycleOwner) {
-            adapterUser.submitList(it)
-        }
         binding?.apply {
             setupRecycler()
             buttonAddGift.setOnClickListener {
                 onClickAddGift()
+            }
+        }
+        lifecycleLaunch {
+            getUserWishListUseCase.get().collect {
+                adapterUser.submitList(it)
             }
         }
     }

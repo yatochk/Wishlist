@@ -1,7 +1,7 @@
 package com.yatochk.wishlistapp.data.friends
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.yatochk.wishlistapp.utils.WISH_LIST_COLLECTION
+import com.yatochk.wishlist.common.utils.WISH_LIST_COLLECTION
 import javax.inject.Inject
 
 class FriendsListRepository @Inject constructor(

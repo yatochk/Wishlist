@@ -3,10 +3,8 @@ package com.yatochk.wishlistapp.ui.friends.gifts
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.yatochk.wishlistapp.data.gift.Gift
+import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlistapp.databinding.FriendGiftItemBinding
-import com.yatochk.wishlistapp.databinding.GiftItemBinding
-import com.yatochk.wishlistapp.ui.friends.FriendViewHolder
 import com.yatochk.wishlistapp.ui.user.gifts.GiftDiffUtil
 
 class FriendGiftAdapter(

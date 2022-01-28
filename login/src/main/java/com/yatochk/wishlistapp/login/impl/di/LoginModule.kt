@@ -1,6 +1,8 @@
-package com.yatochk.wishlistapp.login.di
+package com.yatochk.wishlistapp.login.impl.di
 
+import com.yatochk.wishlistapp.login.api.data.UserInfoRepository
 import com.yatochk.wishlistapp.login.api.navigation.LoginRouter
+import com.yatochk.wishlistapp.login.impl.data.UserInfoRepositoryImpl
 import com.yatochk.wishlistapp.login.impl.navigation.LoginRouterImpl
 import dagger.Module
 import dagger.Provides
@@ -15,5 +17,10 @@ internal class LoginModule {
     fun provideLoginRouter(
         impl: LoginRouterImpl
     ): LoginRouter = impl
+
+    @Provides
+    fun provideUserInfoRepository(
+        impl: UserInfoRepositoryImpl
+    ): UserInfoRepository = impl
 
 }
