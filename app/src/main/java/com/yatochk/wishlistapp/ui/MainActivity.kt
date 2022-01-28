@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var userInfoRepository: UserInfoRepository
 
+    @Inject
     lateinit var loginRouter: LoginRouter
 
     private val myGiftsFragment by lazy { UserGiftsFragment() }
@@ -26,10 +27,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userInfoRepository.setUserName("dania")
+        userInfoRepository.setUserName("alexey")
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showFragment(myGiftsFragment)
+        showFragment(loginRouter.getLoginFragment())
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.my_list -> showFragment(myGiftsFragment)
