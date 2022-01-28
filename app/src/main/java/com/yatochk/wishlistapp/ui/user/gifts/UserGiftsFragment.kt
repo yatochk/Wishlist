@@ -11,7 +11,7 @@ import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
 import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
 import com.yatochk.wishlistapp.ui.base.GiftsFragment
-import com.yatochk.wishlistapp.ui.user.add.AddGiftFragment
+import com.yatochk.wishlistapp.ui.user.add.CreateGiftFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -56,7 +56,7 @@ class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
 
     private fun onClickAddGift() {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.contentFragment, AddGiftFragment.newInstance())
+            .replace(R.id.contentFragment, CreateGiftFragment.newInstance())
             .commitAllowingStateLoss()
     }
 

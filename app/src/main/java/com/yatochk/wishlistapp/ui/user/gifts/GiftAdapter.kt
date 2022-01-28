@@ -9,13 +9,13 @@ import com.yatochk.wishlistapp.databinding.GiftItemBinding
 class GiftAdapter(
     private val layoutInflater: LayoutInflater,
     private val openLinkListener: (String) -> Unit
-) : ListAdapter<Gift, UserGiftViewHolder>(GiftDiffUtil()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserGiftViewHolder {
+) : ListAdapter<Gift, GiftViewHolder>(GiftDiffUtil()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GiftViewHolder {
         val binding = GiftItemBinding.inflate(layoutInflater, parent, false)
-        return UserGiftViewHolder(binding, openLinkListener)
+        return GiftViewHolder(binding, openLinkListener)
     }
 
-    override fun onBindViewHolder(holderUser: UserGiftViewHolder, position: Int) {
-        holderUser.bind(getItem(position))
+    override fun onBindViewHolder(holder: GiftViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 }

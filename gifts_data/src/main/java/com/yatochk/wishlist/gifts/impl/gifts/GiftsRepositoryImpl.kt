@@ -2,6 +2,7 @@ package com.yatochk.wishlist.gifts.impl.gifts
 
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 import com.yatochk.wishlist.common.utils.WISH_LIST_COLLECTION
 import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlist.gifts.api.gift.data.GiftsRepository
@@ -12,7 +13,8 @@ import javax.inject.Inject
 
 class GiftsRepositoryImpl @Inject constructor(
     private val firestore: FirebaseFirestore,
-    private val converter: FirestoreWishListConverter
+    private val converter: FirestoreWishListConverter,
+    private val gson: Gson
 ) : GiftsRepository {
 
     override fun getGiftsByName(name: String): Flow<List<Gift>> {
@@ -21,9 +23,10 @@ class GiftsRepositoryImpl @Inject constructor(
     }
 
     override fun addGiftToWishList(listName: String, gift: Gift) {
+        val giftJson = gson.toJson(gift)
         firestore.collection(WISH_LIST_COLLECTION)
             .document(listName)
-            .update(gift.name, gift.link)
+            .update(gift.name, giftJson)
     }
 
     override fun removeGiftFromWishList(listName: String, giftName: String) {

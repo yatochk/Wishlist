@@ -4,5 +4,6 @@ data class Gift(
     val name: String,
     val description: String,
     val link: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val price: String
 )
