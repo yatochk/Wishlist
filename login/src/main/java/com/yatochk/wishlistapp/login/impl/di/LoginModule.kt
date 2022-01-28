@@ -1,5 +1,8 @@
 package com.yatochk.wishlistapp.login.impl.di
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.yatochk.wishlistapp.login.api.data.UserInfoRepository
 import com.yatochk.wishlistapp.login.api.navigation.LoginRouter
 import com.yatochk.wishlistapp.login.impl.data.UserInfoRepositoryImpl
@@ -22,5 +25,10 @@ internal class LoginModule {
     fun provideUserInfoRepository(
         impl: UserInfoRepositoryImpl
     ): UserInfoRepository = impl
+
+    @Provides
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return Firebase.auth
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.yatochk.wishlistapp.login.impl.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.yatochk.wishlistapp.login.api.LoginListener
 import com.yatochk.wishlistapp.login.databinding.FragmentLoginBinding
 import com.yatochk.wishlistapp.login.impl.domain.LoginUseCase
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineExceptionHandler
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -45,7 +47,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun onLoginClicked() {
         lifecycleLaunch {
-            loginUseCase.login(binding?.editTextName?.text.toString()).collect {
+            loginUseCase.login(
+                binding?.editTextName?.text.toString(),
+                binding?.editTextEmail?.text.toString(),
+                binding?.editTextPassword?.text.toString()
+            ).collect {
                 if (it) {
                     listener?.onLoginSuccess()
                 }

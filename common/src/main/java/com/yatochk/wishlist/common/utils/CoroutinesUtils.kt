@@ -1,16 +1,15 @@
 package com.yatochk.wishlist.common.utils
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 
 fun Fragment.lifecycleLaunch(
-    context: CoroutineContext = EmptyCoroutineContext,
+    context: CoroutineContext = CoroutineExceptionHandler { _, throwable ->
+        Log.e(this::class.java.simpleName, throwable.localizedMessage, throwable)
+    },
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> Unit
 ): Job {
