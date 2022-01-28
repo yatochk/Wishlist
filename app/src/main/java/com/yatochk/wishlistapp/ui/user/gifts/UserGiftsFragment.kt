@@ -57,6 +57,7 @@ class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
     private fun onClickAddGift() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.contentFragment, CreateGiftFragment.newInstance())
+            .addToBackStack(null)
             .commitAllowingStateLoss()
     }
 
