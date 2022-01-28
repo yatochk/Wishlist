@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yatochk.wishlist.common.utils.lifecycleLaunch
-import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlistapp.R
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
@@ -19,14 +18,18 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
 
+    companion object {
+        fun newInstance() = UserGiftsFragment()
+    }
+
     @Inject
     lateinit var getUserWishListUseCase: GetUserWishListUseCase
 
     @Inject
     lateinit var removeUserGiftUseCase: RemoveUserGiftUseCase
 
-    private val adapterUser: UserGiftAdapter by lazy {
-        UserGiftAdapter(layoutInflater, ::onGiftLinkClick, ::onGiftDeleteClick)
+    private val adapter: GiftAdapter by lazy {
+        GiftAdapter(layoutInflater, ::onGiftLinkClick)
     }
 
     override fun getViewBinding(
@@ -46,23 +49,19 @@ class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
         }
         lifecycleLaunch {
             getUserWishListUseCase.get().collect {
-                adapterUser.submitList(it)
+                adapter.submitList(it)
             }
         }
     }
 
     private fun onClickAddGift() {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment, AddGiftFragment())
+            .replace(R.id.contentFragment, AddGiftFragment.newInstance())
             .commitAllowingStateLoss()
     }
 
-    private fun onGiftDeleteClick(gift: Gift) {
-        removeUserGiftUseCase.remove(gift)
-    }
-
     private fun FragmentGiftListBinding.setupRecycler() {
-        recyclerGifts.adapter = adapterUser
+        recyclerGifts.adapter = adapter
         recyclerGifts.layoutManager = LinearLayoutManager(context)
     }
 

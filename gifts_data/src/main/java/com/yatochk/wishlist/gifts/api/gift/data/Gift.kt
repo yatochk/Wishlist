@@ -2,5 +2,7 @@ package com.yatochk.wishlist.gifts.api.gift.data
 
 data class Gift(
     val name: String,
-    val link: String
+    val description: String,
+    val link: String,
+    val imageUrl: String
 )

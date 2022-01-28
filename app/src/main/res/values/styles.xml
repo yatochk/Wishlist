@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="GiftName">
-        <item name="android:textSize">20sp</item>
+    <style name="GiftName" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="FriendName">

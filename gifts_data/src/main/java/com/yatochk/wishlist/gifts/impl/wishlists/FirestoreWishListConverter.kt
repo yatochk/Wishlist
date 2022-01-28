@@ -24,7 +24,12 @@ class FirestoreWishListConverter @Inject constructor() {
     fun convertGifts(gifts: Map<String, Any>?): List<Gift> {
         gifts ?: return emptyList()
         return gifts.map {
-            Gift(it.key, (it.value as? String).orEmpty())
+            Gift(
+                name = it.key,
+                description = "А тут у нас лежит очень длинное описание подарка, что угодно сюда напишем, лишь бы влезало нормально",
+                link = (it.value as? String).orEmpty(),
+                imageUrl = "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-pro-12-11-select-202104_GEO_RU_FMT_WHH?wid=2000&hei=2000&fmt=jpeg&qlt=80&.v=1617865134000"
+            )
         }
     }
 

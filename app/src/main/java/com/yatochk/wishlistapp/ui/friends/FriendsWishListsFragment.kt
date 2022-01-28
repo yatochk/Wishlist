@@ -17,6 +17,10 @@ import javax.inject.Inject
 class FriendsWishListsFragment :
     com.yatochk.wishlist.common.ui.BaseFragment<FragmentFriendsWishListsBinding>() {
 
+    companion object {
+        fun newInstance() = FriendsWishListsFragment()
+    }
+
     @Inject
     lateinit var getFriendsUseCase: GetFriendsUseCase
 
@@ -47,6 +51,7 @@ class FriendsWishListsFragment :
     private fun onFriendClick(friend: Friend) {
         parentFragmentManager.beginTransaction()
             .replace(R.id.contentFragment, FriendGiftsFragment.newInstance(friend.name))
+            .addToBackStack(null)
             .commitAllowingStateLoss()
     }
 }

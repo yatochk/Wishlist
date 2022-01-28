@@ -16,6 +16,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AddGiftFragment : BaseFragment<FragmentGiftAddBinding>() {
 
+    companion object {
+        fun newInstance() = AddGiftFragment()
+    }
+
     @Inject
     lateinit var addUserGiftUseCase: AddUserGiftUseCase
 
@@ -34,12 +38,14 @@ class AddGiftFragment : BaseFragment<FragmentGiftAddBinding>() {
     private fun FragmentGiftAddBinding.listenButton() {
         createGift.setOnClickListener {
             val gift = Gift(
-                editTextName.text.toString(),
-                editTextLink.text.toString()
+                name = editTextName.text.toString(),
+                description = "А тут у нас лежит очень длинное описание подарка, что угодно сюда напишем, лишь бы влезало нормально",
+                link = editTextLink.text.toString(),
+                imageUrl = "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-pro-12-11-select-202104_GEO_RU_FMT_WHH?wid=2000&hei=2000&fmt=jpeg&qlt=80&.v=1617865134000"
             )
             addUserGiftUseCase.add(gift)
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment, UserGiftsFragment())
+                .replace(R.id.contentFragment, UserGiftsFragment())
                 .commitAllowingStateLoss()
         }
     }
