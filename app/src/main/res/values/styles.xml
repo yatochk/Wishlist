@@ -10,10 +10,10 @@
     </style>
 
     <style name="GiftFieldInput">
-        <item name="boxCornerRadiusTopEnd">16dp</item>
-        <item name="boxCornerRadiusTopStart">16dp</item>
-        <item name="boxCornerRadiusBottomEnd">16dp</item>
-        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
     </style>
