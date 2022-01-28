@@ -37,6 +37,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputImageLink"
+                style="@style/GiftFieldInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
@@ -49,11 +50,13 @@
                     android:id="@+id/editTextImageLink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/create_gift_image_link_hint" />
+                    android:hint="@string/create_gift_image_link_hint"
+                    android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputName"
+                style="@style/GiftFieldInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
@@ -72,6 +75,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLink"
+                style="@style/GiftFieldInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -92,6 +96,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputPrice"
+                style="@style/GiftFieldInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -112,6 +117,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputDescription"
+                style="@style/GiftFieldInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
