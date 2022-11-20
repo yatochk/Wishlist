@@ -9,13 +9,13 @@ import com.yatochk.wishlistapp.utils.capitalize
 
 class GiftViewHolder(
     private val binding: GiftItemBinding,
-    private val openLinkListener: (String) -> Unit
+    private val openGiftListener: (Gift) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(gift: Gift) {
         binding.name.text = gift.name.trim().capitalize()
         binding.foreground.setOnClickListener {
-            openLinkListener(gift.link)
+            openGiftListener(gift)
         }
         binding.price.text = gift.price
         binding.giftImage.loadImage(gift.imageUrl)

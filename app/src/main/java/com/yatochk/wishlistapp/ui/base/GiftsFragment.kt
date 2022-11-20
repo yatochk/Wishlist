@@ -1,20 +1,13 @@
 package com.yatochk.wishlistapp.ui.base
 
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
 import androidx.viewbinding.ViewBinding
 import com.yatochk.wishlist.common.ui.BaseFragment
+import com.yatochk.wishlist.gifts.api.gift.data.Gift
+import com.yatochk.wishlistapp.ui.details.GiftDetailsActivity
 
 abstract class GiftsFragment<T : ViewBinding> : BaseFragment<T>() {
 
-    protected fun onGiftLinkClick(url: String) {
-        try {
-            val webpage: Uri = Uri.parse(url)
-            val intent = Intent(Intent.ACTION_VIEW, webpage)
-            startActivity(intent)
-        } catch (throwable: Throwable) {
-            Log.e("Open web link", throwable.localizedMessage, throwable)
-        }
+    protected fun onGiftClick(gift: Gift) {
+        startActivity(GiftDetailsActivity.newIntent(requireContext(), gift))
     }
 }

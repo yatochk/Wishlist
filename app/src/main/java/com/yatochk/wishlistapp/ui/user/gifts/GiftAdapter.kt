@@ -8,11 +8,11 @@ import com.yatochk.wishlistapp.databinding.GiftItemBinding
 
 class GiftAdapter(
     private val layoutInflater: LayoutInflater,
-    private val openLinkListener: (String) -> Unit
+    private val openGiftListener: (Gift) -> Unit
 ) : ListAdapter<Gift, GiftViewHolder>(GiftDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GiftViewHolder {
         val binding = GiftItemBinding.inflate(layoutInflater, parent, false)
-        return GiftViewHolder(binding, openLinkListener)
+        return GiftViewHolder(binding, openGiftListener)
     }
 
     override fun onBindViewHolder(holder: GiftViewHolder, position: Int) {

@@ -33,7 +33,7 @@ class FriendGiftsFragment : GiftsFragment<FragmentFriendGiftListBinding>() {
     lateinit var getFriendWishListUseCase: GetFriendWishListUseCase
 
     private val adapter: GiftAdapter by lazy {
-        GiftAdapter(layoutInflater, ::onGiftLinkClick)
+        GiftAdapter(layoutInflater, ::onGiftClick)
     }
 
     private val friendName get() = requireArguments().getString(FRIEND_NAME_KEY)

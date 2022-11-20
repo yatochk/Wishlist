@@ -10,4 +10,6 @@
     <string name="create_gift_image_link_hint">Ссылка на картинку</string>
     <string name="create_gift_price_hint">Цена</string>
     <string name="create_gift_description_hint">Описание</string>
+    <string name="button_delete">Удалить</string>
+    <string name="button_to_shop">В магазин</string>
 </resources>

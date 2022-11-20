@@ -29,7 +29,7 @@ class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
     lateinit var removeUserGiftUseCase: RemoveUserGiftUseCase
 
     private val adapter: GiftAdapter by lazy {
-        GiftAdapter(layoutInflater, ::onGiftLinkClick)
+        GiftAdapter(layoutInflater, ::onGiftClick)
     }
 
     override fun getViewBinding(
