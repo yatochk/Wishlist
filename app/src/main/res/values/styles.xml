@@ -37,4 +37,8 @@
     <style name="GiftDetailDescription" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="GiftDetailReservationText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

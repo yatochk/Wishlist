@@ -5,7 +5,7 @@ import com.yatochk.wishlist.common.utils.loadImage
 import com.yatochk.wishlistapp.databinding.ItemGiftHeaderBinding
 
 class GiftHeaderViewHolder(
-    val binding: ItemGiftHeaderBinding
+    private val binding: ItemGiftHeaderBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindItem(item: GiftHeaderItem) {

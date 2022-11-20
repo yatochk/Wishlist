@@ -21,9 +21,10 @@ import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlistapp.databinding.ActivityGiftDetailsBinding
 import com.yatochk.wishlistapp.ui.details.header.GiftHeaderAdapterDelegate
 import com.yatochk.wishlistapp.ui.details.header.GiftHeaderItem
-import com.yatochk.wishlistapp.ui.details.image.GiftImageAdapterDelegate
 import com.yatochk.wishlistapp.ui.details.link.GiftLinkAdapterDelegate
 import com.yatochk.wishlistapp.ui.details.link.GiftLinkItem
+import com.yatochk.wishlistapp.ui.details.reservation.GiftReservationAdapterDelegate
+import com.yatochk.wishlistapp.ui.details.reservation.GiftReservationItem
 
 
 class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
@@ -48,10 +49,11 @@ class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupNoLimitStatusBar()
-        binding?.recycler?.adapter = adapter
-        binding?.recycler?.layoutManager = LinearLayoutManager(this)
-        binding?.buttonDelete?.setOnClickListener(::onClickDelete)
+        binding?.apply {
+            setupNoLimitStatusBar()
+            setupRecycler()
+            initViews()
+        }
         gift?.let {
             binding?.giftImage?.loadImage(it.imageUrl)
             updateItems(
@@ -64,19 +66,32 @@ class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
                         price = it.price,
                         link = it.link
                     ),
+                    GiftReservationItem(
+                        isReserved = false
+                    )
                 )
             )
         }
     }
 
-    private fun setupNoLimitStatusBar() {
+    private fun ActivityGiftDetailsBinding.initViews() {
+        buttonEdit.setOnClickListener(::onClickEdit)
+        buttonDelete.setOnClickListener(::onClickDelete)
+    }
+
+    private fun ActivityGiftDetailsBinding.setupRecycler() {
+        recycler.adapter = adapter
+        recycler.layoutManager = LinearLayoutManager(this@GiftDetailsActivity)
+    }
+
+    private fun ActivityGiftDetailsBinding.setupNoLimitStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
         }
-        binding?.root?.applyInsets()
+        root.applyInsets()
     }
 
     private fun View.applyInsets() {
@@ -99,9 +114,17 @@ class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
     }
 
     private fun createRecyclerAdapter() = CompositeAdapter.Builder(layoutInflater).initDelegates {
-        addDelegate(GiftImageAdapterDelegate())
         addDelegate(GiftHeaderAdapterDelegate())
         addDelegate(GiftLinkAdapterDelegate(::onClickLink))
+        addDelegate(GiftReservationAdapterDelegate(::onReservation))
+    }
+
+    private fun onReservation(isChecked: Boolean) {
+
+    }
+
+    private fun onClickEdit(view: View) {
+
     }
 
     private fun onClickDelete(view: View) {

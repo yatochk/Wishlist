@@ -12,4 +12,5 @@
     <string name="create_gift_description_hint">Описание</string>
     <string name="button_delete">Удалить</string>
     <string name="button_to_shop">В магазин</string>
+    <string name="gift_reservation">Забронировать подарок</string>
 </resources>
