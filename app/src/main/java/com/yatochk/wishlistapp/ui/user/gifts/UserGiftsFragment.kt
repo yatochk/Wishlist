@@ -9,7 +9,6 @@ import com.yatochk.wishlist.common.utils.lifecycleLaunch
 import com.yatochk.wishlistapp.R
 import com.yatochk.wishlistapp.databinding.FragmentGiftListBinding
 import com.yatochk.wishlistapp.domain.GetUserWishListUseCase
-import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
 import com.yatochk.wishlistapp.ui.base.GiftsFragment
 import com.yatochk.wishlistapp.ui.user.add.CreateGiftFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,9 +23,6 @@ class UserGiftsFragment : GiftsFragment<FragmentGiftListBinding>() {
 
     @Inject
     lateinit var getUserWishListUseCase: GetUserWishListUseCase
-
-    @Inject
-    lateinit var removeUserGiftUseCase: RemoveUserGiftUseCase
 
     private val adapter: GiftAdapter by lazy {
         GiftAdapter(layoutInflater, ::onGiftClick)

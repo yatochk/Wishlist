@@ -8,25 +8,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
+import androidx.core.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yatochk.recycler_adapter.CompositeAdapter
 import com.yatochk.wishlist.common.ui.BaseActivity
 import com.yatochk.wishlist.common.utils.dpToPixel
 import com.yatochk.wishlist.common.utils.loadImage
 import com.yatochk.wishlist.gifts.api.gift.data.Gift
 import com.yatochk.wishlistapp.databinding.ActivityGiftDetailsBinding
+import com.yatochk.wishlistapp.domain.RemoveUserGiftUseCase
 import com.yatochk.wishlistapp.ui.details.header.GiftHeaderAdapterDelegate
-import com.yatochk.wishlistapp.ui.details.header.GiftHeaderItem
 import com.yatochk.wishlistapp.ui.details.link.GiftLinkAdapterDelegate
-import com.yatochk.wishlistapp.ui.details.link.GiftLinkItem
 import com.yatochk.wishlistapp.ui.details.reservation.GiftReservationAdapterDelegate
-import com.yatochk.wishlistapp.ui.details.reservation.GiftReservationItem
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
 
     companion object {
@@ -39,7 +38,15 @@ class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
         }
     }
 
+    @Inject
+    lateinit var removeUserGiftUseCase: RemoveUserGiftUseCase
+
+    @Inject
+    lateinit var giftDetailsUseCaseFactory: GetGiftDetailsUseCaseFactory
+
     private val gift: Gift? get() = intent?.getSerializableExtra(GIFT_EXTRA) as? Gift
+
+    private val giftDetailsUseCase by lazy { giftDetailsUseCaseFactory.create(gift) }
 
     private val adapter by lazy { createRecyclerAdapter() }
 
@@ -53,24 +60,19 @@ class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
             setupNoLimitStatusBar()
             setupRecycler()
             initViews()
+            initImage(gift)
         }
-        gift?.let {
-            binding?.giftImage?.loadImage(it.imageUrl)
-            updateItems(
-                listOf(
-                    GiftHeaderItem(
-                        name = it.name,
-                        description = it.description
-                    ),
-                    GiftLinkItem(
-                        price = it.price,
-                        link = it.link
-                    ),
-                    GiftReservationItem(
-                        isReserved = false
-                    )
-                )
-            )
+        updateItems(giftDetailsUseCase.getDetailsItems())
+    }
+
+    private fun ActivityGiftDetailsBinding.initImage(gift: Gift?) {
+        if (gift != null && gift.imageUrl.isNotBlank()) {
+            giftImage.isVisible = true
+            giftImage.loadImage(gift.imageUrl)
+            toolbar.minimumHeight = dpToPixel(156f)
+        } else {
+            giftImage.isVisible = false
+            toolbar.minimumHeight = dpToPixel(56f)
         }
     }
 
@@ -103,7 +105,7 @@ class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
                 right = insets.right
             )
             binding?.scrim?.updateLayoutParams {
-                height = insets.top + dpToPixel(56f).toInt()
+                height = insets.top + dpToPixel(56f)
             }
             WindowInsetsCompat.CONSUMED
         }
@@ -128,11 +130,24 @@ class GiftDetailsActivity : BaseActivity<ActivityGiftDetailsBinding>() {
     }
 
     private fun onClickDelete(view: View) {
-
+        showConfirmDelete()
     }
 
     private fun onClickLink(link: String) {
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))
+    }
+
+    private fun showConfirmDelete() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Удаление подарка")
+            .setPositiveButton("Удалить") { _, _ ->
+                gift?.let { removeUserGiftUseCase.remove(it) }
+                finish()
+            }
+            .setNegativeButton("Отменить") { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            .show()
     }
 
 }
